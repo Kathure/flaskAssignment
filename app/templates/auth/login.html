@@ -6,7 +6,24 @@
 <div class="page-header">
     <h1>Login</h1>
 </div>
-<div">
+<div>
+<form>
+  <div class="row">
+    <div class="medium-6 columns">
+      <label>Username
+        <input type="text" placeholder="username">
+      </label>
+    </div>
+    <div class="medium-6 columns">
+      <label>Password
+  <input type="password" aria-describedby="passwordHelpText">
+</label>
+    </div>
+<div class="input-group-button">
+    <input type="submit" class="button" value="Submit">
+  </div>
+  </div>
+</form>
     
     <br>
     <p>New user? <a href="{{ url_for('auth.register') }}">Click here to register</a>.</p>
