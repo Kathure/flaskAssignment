@@ -1,0 +1,47 @@
+<html>
+{% block title %}Flasky{% endblock %}
+
+<head>
+
+<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/static/css" type ="">
+    <link rel="stylesheet" href="/static/css/app.css">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+{% block content %}
+    <div class="container">
+        <ul>
+                
+        <li> <a href="{{ url_for('main.index') }}">Flasky</a></li>
+                      <li><a href="{{ url_for('main.index') }}">Home</a></li>
+           </ul>
+            <ul>
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+  
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+{{ moment.include_moment() }}
+{% endblock %}
